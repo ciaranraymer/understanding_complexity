@@ -1,0 +1,61 @@
+import pint
+import scipy as sp
+import numpy as np
+import matplotlib as mp
+import matplotlib.pyplot as plt
+UNITS = pint.UnitRegistry()
+Quantity = UNITS.Quantity
+
+#Driver characteristics
+class Driver:
+    def __init__(self, loc, speed, acceleration, safety_dist, sensitivity, reaction_time):
+        self.start = loc
+        self.loc = loc
+        self.speed = v_max
+        v_max = V * (metre / second)
+        self.acceleration = acc * (metre / second)**2
+        self.safety_dist = s
+        s = 2
+        self.sentivity = a
+        a = 1
+        self.reaction_time = rt
+        dx = ((self.loc+1)-self.loc)
+
+#Road characteristics
+class Road:
+        def __init__(self, n, radius, length, agent=Driver):
+            self.length = length * metre
+            length = 200
+            self.n = cars
+            cars = 100
+            self.radius = r
+            r = (length / (2 * pi))
+    
+            locs = np.linspace(0, length, n, endpoint=False)  #links the Road and Driver classes
+            self.drivers = [agent(loc) for loc in locs]
+            for i in range(n):
+                j = (i+1) % n
+                self.drivers[i].next = self.drivers[j]
+
+#create movement of drivers along the road
+def move(self, driver):
+    d = self.distance(driver)
+    speed = driver.speed + acc
+    if speed > d:
+        speed = 0
+    driver.speed = speed
+    driver.loc += speed                
+    
+#OVF from Sugiyama (1999)
+optimal_velocity_function = np.tanh(dx-2) + np.tanh(2)
+
+#Euler method to return new position of drivers
+def euler_method(x, v, n, h, tau, s, v_max):
+    dv = np.zeros(n)
+    for j in range(n - 1):
+        dv[j] = tau ** (-1) * (optimal_velocity_function(x[j+1] - x[j], s, v_max) - v[j])
+    dv[n - 1] = tau ** (-1) * (v_max - v[n - 1])
+    v_new = v + h * dv
+    x_new = x + h * v_new
+    return [x_new, v_new]
+    
