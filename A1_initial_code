@@ -20,6 +20,7 @@ class Driver:
         a = 1
         self.reaction_time = rt
         dx = ((self.loc+1)-self.loc)
+        perturb = V * 0.001
 
 #Road characteristics
 class Road:
