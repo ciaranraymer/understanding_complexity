@@ -1,0 +1,46 @@
+# runs a euler_method on variables in the OVF to track their movement.
+#code sourced from https://sites.math.washington.edu/~wcasper/math307_win16/review/euler_method/euler_method.pdf
+#Not sure the OVF is the right equation to use, can't find a place for "a"
+#Original euler_method exercise below this text, copy this into a new note to see expected output
+""""x0 = 0
+y0 = 1
+xf = 10
+n = 101
+deltax = (xf -x0)/(n-1)
+
+x = np.linspace( x0, xf, n)
+
+y = np.zeros([n])
+y [0] = y0
+for i in range (1, n) :
+    y [i] = deltax*(-y [i-1] + np.sin(x[i-1])) + y[i-1]
+
+for i in range (n):
+    print(x[i], y[i])
+
+plt.plot(x, y,'o')
+plt.xlabel("Value of X")
+plt.ylabel("Value of Y")
+plt.title("Approximate Solution with Forward Euler's Method")
+plt.show()
+print(plt.plot())
+"""""
+import numpy as np
+from matplotlib import pyplot as plt
+def e_plot(N,L):
+    N = x0
+    L = xf 
+    x0 = 2
+    dx = (xf-x0)/(N-1)
+    
+    x = np.linspace(x0, xf, N)
+    y = np.zeros([N])
+    
+    y[0] = 0
+    for i in range (0, 100):
+        y[i] = np.tanh(dx - x0) + np.tanh(x0)
+        
+    plt.plot(x, y, 'o' )
+    plt.xlabel("Distance")
+    plt.ylabel("Time")
+    print(plt.plot(x, y, 'o'))
